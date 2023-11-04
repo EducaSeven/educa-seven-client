@@ -88,3 +88,4 @@ gemini-report/
 *.log
 .DS_Store
 src/core-temp
+.next/trace

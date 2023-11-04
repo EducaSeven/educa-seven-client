@@ -9,9 +9,11 @@ export default function Sidebar({children}: any) {
             <div className="drawer-content">
                 <label htmlFor="my-drawer-2" className="top-2 left-0 absolute flex items-center justify-start">
                     <HiBars3 className={'text-2xl text-gray-500 cursor-pointer hover:text-gray-700 w-12'}/>
-                    
+
                 </label>
-                <div>{children}</div>
+                <div className={'w-full h-full mt-7 sm:mt-0 p-2'}>
+                    {children}
+                </div>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

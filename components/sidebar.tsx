@@ -1,17 +1,17 @@
 import {HiBars3} from "react-icons/hi2";
 
 
-export default function Sidebar(props) {
+export default function Sidebar({children}: any) {
     return (
 
         <div className="drawer sm:drawer-open fixed">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
             <div className="drawer-content flex flex-col items-center justify-center">
                 <label htmlFor="my-drawer-2" className="top-2 left-0 absolute flex items-center justify-start">
                     <HiBars3 className={'text-2xl text-gray-500 cursor-pointer hover:text-gray-700 w-12'}/>
- ijoijoij
+                    
                 </label>
-
+                <div>{children}</div>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

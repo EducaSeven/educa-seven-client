@@ -5,10 +5,9 @@ import Sidebar from "@/components/sidebar";
 export default function App({Component, pageProps}: AppProps) {
     return (
         <>
-            <Sidebar/>
-            <div className={'p-4 pt-8 sm:ml-64 sm:mt-0'}>
+            <Sidebar>
                 <Component {...pageProps}/>
-            </div>
+            </Sidebar>
         </>
     )
 }

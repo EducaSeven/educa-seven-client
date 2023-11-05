@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body className="bg-gray-50 dark:bg-gray-800">
+      <body >
         <Main />
         <NextScript />
       </body>

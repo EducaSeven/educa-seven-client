@@ -4,14 +4,14 @@ import {HiBars3} from "react-icons/hi2";
 export default function Sidebar({children}: any) {
     return (
 
-        <div className="drawer sm:drawer-open fixed">
+        <div className="drawer sm:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
-            <div className="drawer-content">
+            <div className="drawer-content bg-secondary">
                 <label htmlFor="my-drawer-2" className="top-2 left-0 absolute flex items-center justify-start">
                     <HiBars3 className={'text-2xl text-gray-500 cursor-pointer hover:text-gray-700 w-12'}/>
 
                 </label>
-                <div className={'w-full h-full mt-7 sm:mt-0 p-2'}>
+                <div className={'w-full h-full overflow-auto mt-7 sm:mt-0 p-2 '}>
                     {children}
                 </div>
             </div>

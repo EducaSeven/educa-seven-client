@@ -18,9 +18,6 @@ interface Pergunta {
 }
 
 export default function CreateQuiz() {
-	const router = useRouter();
-	const { quesId } = router.query;
-
 	const [providerPerguntas, setProviderPerguntas] = useState<Perguntas>();
 	const [providerTablePerguntas, setProviderTablePerguntas] = useState<Pergunta[]>([]);
 	const [quizTitle, setQuizTitle] = useState("");
@@ -31,20 +28,8 @@ export default function CreateQuiz() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				if (quesId) {
-					console.log(quesId);
-					const response = await axios.get(`http://192.168.3.66:3000/questionario/${quesId}`);
-					const questionnaireData: Questionario = response.data;
-
-					setQuizTitle(questionnaireData.quesTittle);
-					setQuizDescription(questionnaireData.quesDescription);
-					setQuizImage(questionnaireData.quesImage);
-					setProviderTablePerguntas(questionnaireData.perguntas);
-				}
-
-				// const resp = await axios.get("http://192.168.3.66:3000/pergunta/all");
-				// setProviderPerguntas(resp.data);
-				getPerguntas();
+				const resp = await axios.get("http://192.168.3.66:3000/pergunta/all");
+				setProviderPerguntas(resp.data);
 			} catch (error) {
 				console.error("Error:", error);
 			}
@@ -52,33 +37,6 @@ export default function CreateQuiz() {
 
 		fetchData();
 	}, []);
-
-	function getPerguntas() {
-		let perguntas: Perguntas = new Object() as Perguntas;
-
-		let pergunta1: Pergunta = {
-			id: "1",
-			titulo: "Pergunta 1",
-		};
-
-		let pergunta2: Pergunta = {
-			id: "2",
-			titulo: "Pergunta 2",
-		};
-
-		let pergunta3: Pergunta = {
-			id: "3",
-			titulo: "Pergunta 3",
-		};
-
-		let pergunta4: Pergunta = {
-			id: "4",
-			titulo: "Pergunta 4",
-		};
-
-		perguntas.perguntas = [pergunta1, pergunta2, pergunta3, pergunta4];
-		setProviderPerguntas(perguntas);
-	}
 
 	function setPergunta(value: string) {
 		const pergunta = providerPerguntas?.perguntas.find((pergunta) => pergunta.id === value);
@@ -105,21 +63,18 @@ export default function CreateQuiz() {
 	}
 
 	function onSubmit() {
-		const quesIdString = quesId ? quesId : "";
-
 		let providerPerguntasId: string[] = handleProviderPerguntas();
 
 		const newQuiz = {
-			quesId: quesIdString,
+			quesId: "",
 			quesTittle: quizTitle,
 			quesDescription: quizDescription,
 			quesImage: quizImage,
 			perguntas: providerPerguntasId,
 		};
-
 		if (newQuiz.perguntas.length > 0) {
-			console.log(newQuiz);
-			// axios.post("http://localhost:8080/questionario", newQuiz);
+			axios.post("http://localhost:8080/questionario", newQuiz);
+			window.location.href = "/home_quiz";
 		} else {
 			// mensagem de erro
 		}

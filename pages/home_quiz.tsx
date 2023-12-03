@@ -24,7 +24,7 @@ export default function HomeQuiz() {
 
 	return (
 		<div className="w-full px-12">
-			<Link href="/create_quiz" className={"flex justify-end"}>
+			<Link href="/create_quiz" legacyBehavior className={"flex justify-end"}>
 				<AiOutlinePlusCircle
 					style="color: #03A4FF"
 					className="w-10 h-10 justify-end right-6 top-6 text-blue-500 cursor-pointer"

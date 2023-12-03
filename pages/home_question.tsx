@@ -1,59 +1,83 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { useRouter } from "next/router";
+import ModalCreateQuiz from "../components/modal_create_question";
 interface Pergunta {
 	pergId: string;
-	pergTittle: string;
+	pergTitle: string;
 	pergDescription: string;
+	respostas: Resposta[];
+}
+
+interface Resposta {
+	respDescription: string;
+	respResposta: boolean;
 }
 export default function HomeQuestion() {
-	const router = useRouter();
 	const [providerTablePerguntas, setProviderTablePerguntas] = useState<Pergunta[]>([]);
+	const [pergunta, setPergunta] = useState<Pergunta>({
+		pergId: "",
+		pergTitle: "",
+		pergDescription: "",
+		respostas: [],
+	});
 
 	useEffect(() => {
+		getPerguntas();
+	}, []);
+
+	function getPerguntas() {
 		const fetchData = async () => {
-			const resp = (await axios.get("http://192.168.3.66:3000/pergunta/all")).data;
-			setProviderTablePerguntas(resp);
+			try {
+				const resp = await axios.get("http://192.168.3.66:3000/pergunta/all");
+				setProviderTablePerguntas(resp.data);
+			} catch (error) {
+				console.error("Erro ao encontrar perguntas");
+			}
 		};
 
 		fetchData();
-	}, []);
+	}
 
-	const onEdit = (Pergunta: Pergunta) => {
-		const queryParams = { pergId: Pergunta.pergId };
-
-		router.push({
-			pathname: "/create_question",
-			query: queryParams,
-		});
+	const onEdit = (perguntaEdit: Pergunta) => {
+		if (perguntaEdit.pergId) {
+			setPergunta(perguntaEdit);
+		}
 	};
 
-	function onDelete(question: Pergunta) {
-		return () => {
-			// toastEmitted([`Deletando pergunta '${question.pergTittle}'`], "success");
+	function onDelete(quesId: string) {
+		return async () => {
+			try {
+				const resp = await axios.get("http://192.168.3.66:3000/pergunta/delete/" + quesId);
+
+				if (resp.status === 200) {
+					await getPerguntas();
+				} else {
+					console.error("Falha ao deletar pergunta");
+				}
+			} catch (error) {
+				console.error("Erro ao deletar pergunta");
+			}
 		};
 	}
 
-	function onCreate() {
-		// toastEmitted(["Criando pergunta"], "success");
+	function handleModalSubmit() {
+		const label = document.getElementById("my-drawer-4") as HTMLElement;
+		label.click();
 	}
 
 	return (
-		<div className="w-full px-14 flex flex-col gap-6 mt-6 h-full">
+		<div className="w-full sm:p-0 xl:px-14 flex flex-col gap-6 mt-6 h-full">
 			<div className="flex justify-between items-center">
 				<h1 className="text-2xl font-bold">Perguntas</h1>
 				<Link href="/create_question" legacyBehavior>
-					<button className="btn btn-primary" onClick={onCreate}>
-						<a>Criar pergunta</a>
-					</button>
+					<button className="btn btn-primary">Criar pergunta</button>
 				</Link>
 			</div>
 			<div className="overflow-auto">
 				<table className="table">
 					<thead>
 						<tr>
-							<th></th>
 							<th>Nome</th>
 							<th>Descrição</th>
 						</tr>
@@ -61,14 +85,13 @@ export default function HomeQuestion() {
 					<tbody>
 						{providerTablePerguntas.map((question) => (
 							<tr key={question.pergId}>
-								<th>{question.pergId}</th>
-								<td>{question.pergTittle}</td>
+								<td>{question.pergTitle}</td>
 								<td>{question.pergDescription}</td>
 								<th className="flex justify-end gap-2">
-									<button className="btn btn-ghost btn-xs" onClick={() => onEdit(question)}>
+									<label htmlFor="my-drawer-4" className="btn btn-ghost btn-xs" onClick={() => onEdit(question)}>
 										details
-									</button>
-									<button className="btn btn-error btn-xs" onClick={onDelete(question)}>
+									</label>
+									<button className="btn btn-error btn-xs" onClick={onDelete(question.pergId)}>
 										delete
 									</button>
 								</th>
@@ -76,6 +99,23 @@ export default function HomeQuestion() {
 						))}
 					</tbody>
 				</table>
+			</div>
+			<div className="drawer drawer-end w-fit">
+				<input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+				<div className="drawer-side z-9999">
+					<label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+					<ul className="menu w-fit min-h-full bg-gray-800 text-base-content">
+						<ModalCreateQuiz
+							pergId={pergunta.pergId}
+							pergDescription={pergunta.pergDescription}
+							pergTitle={pergunta.pergTitle}
+							respostas={pergunta.respostas}
+							titleForms="Editar pergunta"
+							modal={true}
+							onClose={handleModalSubmit}
+						></ModalCreateQuiz>
+					</ul>
+				</div>
 			</div>
 		</div>
 	);

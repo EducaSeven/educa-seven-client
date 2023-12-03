@@ -28,7 +28,10 @@ export default function CardQuiz(props: Props) {
 				/>
 			</figure>
 			<div className="card-body">
-				<h2 className="card-title">{props.quesTittle}</h2>
+				<div className="flex justify-between">
+					<h2 className="card-title">{props.quesTittle}</h2>
+					<div className="badge badge-secondary h-6">{props.quesId}</div>
+				</div>
 				<p>{props.quesDescription}</p>
 				<div className="card-actions justify-end">
 					<Link href="/create_question" legacyBehavior>

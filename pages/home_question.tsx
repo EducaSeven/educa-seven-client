@@ -3,22 +3,23 @@ import Link from "next/link";
 import axios from "axios";
 import ModalCreateQuiz from "../components/modal_create_question";
 interface Pergunta {
-	pergId: string;
-	pergTitle: string;
-	pergDescription: string;
+	id: string;
+	titulo: string;
+	description: string;
 	respostas: Resposta[];
 }
 
 interface Resposta {
-	respDescription: string;
-	respResposta: boolean;
+	id: string;
+	description: string;
+	resultado: boolean;
 }
 export default function HomeQuestion() {
 	const [providerTablePerguntas, setProviderTablePerguntas] = useState<Pergunta[]>([]);
 	const [pergunta, setPergunta] = useState<Pergunta>({
-		pergId: "",
-		pergTitle: "",
-		pergDescription: "",
+		id: "",
+		titulo: "",
+		description: "",
 		respostas: [],
 	});
 
@@ -37,18 +38,19 @@ export default function HomeQuestion() {
 		};
 
 		fetchData();
+		console.log("aquii");
 	}
 
 	const onEdit = (perguntaEdit: Pergunta) => {
-		if (perguntaEdit.pergId) {
+		if (perguntaEdit.id) {
 			setPergunta(perguntaEdit);
 		}
 	};
 
-	function onDelete(quesId: string) {
+	function onDelete(id: string) {
 		return async () => {
 			try {
-				const resp = await axios.get("http://localhost:4000/pergunta/delete/" + quesId);
+				const resp = await axios.delete("http://localhost:4000/pergunta/delete/" + id);
 
 				if (resp.status === 200) {
 					await getPerguntas();
@@ -84,14 +86,14 @@ export default function HomeQuestion() {
 					</thead>
 					<tbody>
 						{providerTablePerguntas.map((question) => (
-							<tr key={question.pergId}>
-								<td>{question.pergTitle}</td>
-								<td>{question.pergDescription}</td>
+							<tr key={question.id}>
+								<td>{question.titulo}</td>
+								<td>{question.description}</td>
 								<th className="flex justify-end gap-2">
 									<label htmlFor="my-drawer-4" className="btn btn-ghost btn-xs" onClick={() => onEdit(question)}>
 										details
 									</label>
-									<button className="btn btn-error btn-xs" onClick={onDelete(question.pergId)}>
+									<button className="btn btn-error btn-xs" onClick={onDelete(question.id)}>
 										delete
 									</button>
 								</th>
@@ -106,9 +108,9 @@ export default function HomeQuestion() {
 					<label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
 					<ul className="menu w-fit min-h-full bg-gray-800 text-base-content">
 						<ModalCreateQuiz
-							pergId={pergunta.pergId}
-							pergDescription={pergunta.pergDescription}
-							pergTitle={pergunta.pergTitle}
+							pergId={pergunta.id}
+							pergDescription={pergunta.description}
+							pergTitle={pergunta.titulo}
 							respostas={pergunta.respostas}
 							titleForms="Editar pergunta"
 							modal={true}

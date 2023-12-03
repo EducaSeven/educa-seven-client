@@ -29,7 +29,7 @@ export default function HomeQuestion() {
 	function getPerguntas() {
 		const fetchData = async () => {
 			try {
-				const resp = await axios.get("http://192.168.3.66:3000/pergunta/all");
+				const resp = await axios.get("http://localhost:4000/pergunta/all");
 				setProviderTablePerguntas(resp.data);
 			} catch (error) {
 				console.error("Erro ao encontrar perguntas");
@@ -48,7 +48,7 @@ export default function HomeQuestion() {
 	function onDelete(quesId: string) {
 		return async () => {
 			try {
-				const resp = await axios.get("http://192.168.3.66:3000/pergunta/delete/" + quesId);
+				const resp = await axios.get("http://localhost:4000/pergunta/delete/" + quesId);
 
 				if (resp.status === 200) {
 					await getPerguntas();

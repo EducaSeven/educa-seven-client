@@ -1,26 +1,34 @@
 import Link from "next/link";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import {AiOutlinePlusCircle} from "react-icons/ai";
 import CardQuiz from "../components/card_quiz";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
-interface Questionario {
-    quesId: string;
-    quesTittle: string;
-    quesDescription: string;
+interface Quiz {
+    id: string;
+    nome: string;
 }
 
-export default function Home() {
-    const [ProviderQuestionario, setProviderQuestionario] = useState<Questionario[]>([]);
+interface HomeProps {
+    data: Quiz[];
+}
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const resp = (await axios.get("http://192.168.3.66:3000/questionario/all")).data;
-            setProviderQuestionario(resp);
-        };
+export default function Home({data}: HomeProps) {
 
-        fetchData();
-    }, []);
+    if (data.length === 0) {
+        return (
+            <div className="w-full px-12">
+                <Link href="/create_quiz" legacyBehavior className={"flex justify-end"}>
+                    <AiOutlinePlusCircle
+                        style="color: #03A4FF"
+                        className="w-10 h-10 justify-end right-6 top-6 text-blue-500 cursor-pointer"
+                    ></AiOutlinePlusCircle>
+                </Link>
+                <div className="w-full my-10 grid gap-y-12 gap-x-12 2xl:grid-cols-3 xl:grid-cols-2 justify-center">
+                    <h1 className="text-2xl text-center">Nenhum quiz encontrado</h1>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="w-full px-12">
@@ -31,15 +39,29 @@ export default function Home() {
                 ></AiOutlinePlusCircle>
             </Link>
             <div className="w-full my-10 grid gap-y-12 gap-x-12 2xl:grid-cols-3 xl:grid-cols-2 justify-center">
-                {ProviderQuestionario.map((question, index) => (
+                {data && data.map((question, index) => (
                     <CardQuiz
                         key={index}
-                        quesId={question.quesId}
-                        quesTittle={question.quesTittle}
-                        quesDescription={question.quesDescription}
+                        id={index.toString()}
+                        title={question.nome}
+                        description={'asdasd'}
                     />
                 ))}
             </div>
         </div>
     );
+}
+
+
+export async function getServerSideProps() {
+    let data
+    try {
+        data = (await axios.get("http://localhost:4000/quizzes")).data;
+    } catch (error) {
+        console.error("Erro ao encontrar quizzes");
+    }
+
+    return {
+        props: {data},
+    };
 }

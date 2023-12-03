@@ -78,7 +78,7 @@ export default function ModalCreateQuiz(props: Props) {
 				respostas: respostas.filter((resposta) => resposta.respDescription),
 			};
 
-			const resp = await axios.post("http://192.168.3.66:3000/pergunta", perguntaSubmit);
+			const resp = await axios.post("http://localhost:4000/pergunta", perguntaSubmit);
 
 			props.onClose();
 			// toastEmitted(["Pergunta salvada com sucesso"], "success");

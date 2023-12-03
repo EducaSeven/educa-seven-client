@@ -28,7 +28,7 @@ export default function CreateQuiz() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const resp = await axios.get("http://192.168.3.66:3000/pergunta/all");
+				const resp = await axios.get("http://localhost:4000/pergunta/all");
 				setProviderPerguntas(resp.data);
 			} catch (error) {
 				console.error("Error:", error);

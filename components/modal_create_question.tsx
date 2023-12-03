@@ -13,37 +13,38 @@ interface Props {
 }
 
 interface Pergunta {
-	pergId: string;
-	pergTitle: string;
-	pergDescription: string;
+	id: string;
+	titulo: string;
+	description: string;
 	respostas: Resposta[];
 }
 
 interface Resposta {
-	respDescription: string;
-	respResposta: boolean;
+	id: string;
+	description: string;
+	resultado: boolean;
 }
 
 export default function ModalCreateQuiz(props: Props) {
 	const [pergunta, setPergunta] = useState<Pergunta>({
-		pergId: "",
-		pergTitle: "",
-		pergDescription: "",
+		id: "",
+		titulo: "",
+		description: "",
 		respostas: [],
 	});
 	const [respostas, setRespostas] = useState<Resposta[]>([
-		{ respDescription: "", respResposta: false },
-		{ respDescription: "", respResposta: false },
-		{ respDescription: "", respResposta: false },
-		{ respDescription: "", respResposta: false },
+		{ id: "", description: "", resultado: false },
+		{ id: "", description: "", resultado: false },
+		{ id: "", description: "", resultado: false },
+		{ id: "", description: "", resultado: false },
 	]);
 
 	useEffect(() => {
 		if (props.pergId) {
 			let perguntaEdit: Pergunta = {
-				pergId: props.pergId,
-				pergTitle: props.pergTitle,
-				pergDescription: props.pergDescription,
+				id: props.pergId,
+				titulo: props.pergTitle,
+				description: props.pergDescription,
 				respostas: props.respostas,
 			};
 
@@ -54,18 +55,18 @@ export default function ModalCreateQuiz(props: Props) {
 
 	function handleRespostaChange(index: number, description: string) {
 		const updatedRespostas = [...respostas];
-		updatedRespostas[index].respDescription = description;
+		updatedRespostas[index].description = description;
 		setRespostas(updatedRespostas);
 	}
 
 	function handleRespostaCheckboxChange(index: number) {
 		const updatedRespostas = [...respostas];
-		updatedRespostas[index].respResposta = !updatedRespostas[index].respResposta;
+		updatedRespostas[index].resultado = !updatedRespostas[index].resultado;
 		setRespostas(updatedRespostas);
 	}
 
 	function validateAnswers(respostas: Resposta[]): boolean {
-		const trueAnswersCount = respostas.filter((resposta) => resposta.respResposta).length;
+		const trueAnswersCount = respostas.filter((resposta) => resposta.resultado).length;
 		return trueAnswersCount === 1;
 	}
 
@@ -75,7 +76,7 @@ export default function ModalCreateQuiz(props: Props) {
 		if (isValid) {
 			const perguntaSubmit: Pergunta = {
 				...pergunta,
-				respostas: respostas.filter((resposta) => resposta.respDescription),
+				respostas: respostas.filter((resposta) => resposta.description),
 			};
 
 			const resp = await axios.post("http://localhost:4000/pergunta", perguntaSubmit);
@@ -108,9 +109,9 @@ export default function ModalCreateQuiz(props: Props) {
 					<input
 						id="pergunta"
 						type="text"
-						value={pergunta.pergTitle}
+						value={pergunta.titulo}
 						className="input text-xs input-bordered w-full max-w-xl"
-						onChange={(e) => setPergunta({ ...pergunta, pergTitle: e.target.value })}
+						onChange={(e) => setPergunta({ ...pergunta, titulo: e.target.value })}
 					/>
 				</div>
 			</div>
@@ -119,9 +120,9 @@ export default function ModalCreateQuiz(props: Props) {
 					<span className="label-text">Descrição</span>
 				</label>
 				<textarea
-					value={pergunta.pergDescription}
+					value={pergunta.description}
 					className="textarea text-xs textarea-bordered h-24"
-					onChange={(e) => setPergunta({ ...pergunta, pergDescription: e.target.value })}
+					onChange={(e) => setPergunta({ ...pergunta, description: e.target.value })}
 				></textarea>
 			</div>
 			<div className="w-full flex justify-between align-center gap-2 flex-col">
@@ -132,7 +133,7 @@ export default function ModalCreateQuiz(props: Props) {
 								<span className="label-text">{`Resposta ${index + 1}`}</span>
 							</label>
 							<textarea
-								value={resposta.respDescription}
+								value={resposta.description}
 								className="textarea text-xs textarea-bordered h-24"
 								onChange={(e) => handleRespostaChange(index, e.target.value)}
 							></textarea>
@@ -142,7 +143,7 @@ export default function ModalCreateQuiz(props: Props) {
 								<span className="label-text">Resposta correta</span>
 								<input
 									type="checkbox"
-									checked={resposta.respResposta}
+									checked={resposta.resultado}
 									className="checkbox text-xs checkbox-primary"
 									onChange={() => handleRespostaCheckboxChange(index)}
 								/>

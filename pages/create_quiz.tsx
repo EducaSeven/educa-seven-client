@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -66,15 +65,17 @@ export default function CreateQuiz() {
 		let providerPerguntasId: string[] = handleProviderPerguntas();
 
 		const newQuiz = {
-			quesId: "",
-			quesTittle: quizTitle,
-			quesDescription: quizDescription,
-			quesImage: quizImage,
+			titulo: quizTitle,
+			descricao: quizDescription,
+			urlImageQuiz: quizImage,
 			perguntas: providerPerguntasId,
 		};
+
+
+		console.log(newQuiz)
 		if (newQuiz.perguntas.length > 0) {
-			axios.post("http://localhost:8080/questionario", newQuiz);
-			window.location.href = "/home_quiz";
+			axios.post("http://localhost:4000/quizzes", newQuiz);
+			window.location.href = "/";
 		} else {
 			// mensagem de erro
 		}

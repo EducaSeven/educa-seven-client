@@ -21,10 +21,13 @@ export default function Home({data}: HomeProps) {
                     <AiOutlinePlusCircle
                         style="color: #03A4FF"
                         className="w-10 h-10 justify-end right-6 top-6 text-blue-500 cursor-pointer"
-                    ></AiOutlinePlusCircle>
+                    />
                 </Link>
-                <div className="w-full my-10 grid gap-y-12 gap-x-12 2xl:grid-cols-3 xl:grid-cols-2 justify-center">
+                <div className="w-full my-10 justify-center flex space-x-6 h-screen items-center ">
                     <h1 className="text-2xl text-center">Nenhum quiz encontrado</h1>
+                    <Link href={"/create_quiz"}>
+                        <div className="btn btn-primary">Criar quiz</div>
+                    </Link>
                 </div>
             </div>
         );

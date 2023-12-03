@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const SelectAnswer: React.FC = () => {
+const SelectAnswer = () => {
     const [progress, setProgress] = useState(100);
 
     useEffect(() => {

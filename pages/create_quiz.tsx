@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import Toast from "@/components/toast";
+import Link from "next/link";
 
 interface Questionario {
     quesTittle: string;
@@ -150,7 +151,7 @@ export default function CreateQuiz() {
                         <option value={0} disabled>
                             Selecione uma pergunta
                         </option>
-                        {providerPerguntas?.perguntas.map((question) => (
+                        {providerPerguntas && providerPerguntas?.perguntas.map((question) => (
                             <option value={question.id} key={question.id}>
                                 {question.titulo}
                             </option>
@@ -162,7 +163,7 @@ export default function CreateQuiz() {
                 </button>
             </div>
             <div className="overflow-auto w-full rounded-md items-center">
-                {providerTablePerguntas.length > 0 && (
+                {providerPerguntas && providerTablePerguntas.length > 0 && (
 
                 <table className="table">
                     <thead>
@@ -191,6 +192,9 @@ export default function CreateQuiz() {
                 {providerTablePerguntas.length === 0 && (
                     <div className="w-full my-10 justify-center flex space-x-6 border py-12 rounded-md items-center ">
                         <h1 className="text-2xl text-center">Nenhuma pergunta adicionada</h1>
+                        <Link href={"/create_question"}>
+                            <div className="btn btn-primary">Adicionar pergunta</div>
+                        </Link>
                     </div>
                 )}
             </div>

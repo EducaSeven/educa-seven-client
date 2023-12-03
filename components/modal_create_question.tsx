@@ -91,7 +91,7 @@ export default function ModalCreateQuiz(props: Props) {
 		<div className={` ${!props.modal ? "w-full px-14 flex flex-col gap-6 mt-6 h-full" : ""}`}>
 			<div className="flex justify-between items-center">
 				<h1 className="text-2xl font-bold">{props.titleForms}</h1>
-				{props.modal == true && (
+				{props.modal && (
 					<IoMdCloseCircleOutline
 						className="text-2xl cursor-pointer"
 						onClick={() => {

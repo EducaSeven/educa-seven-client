@@ -11,11 +11,6 @@ export default function CardQuiz(props: Props) {
 	const router = useRouter();
 	const handleViewClick = () => {
 		const queryParams = { id: props.id };
-
-		router.push({
-			pathname: "/create_quiz",
-			query: queryParams,
-		});
 	};
 
 	return (
@@ -34,8 +29,8 @@ export default function CardQuiz(props: Props) {
 				</div>
 				<p>{props.description}</p>
 				<div className="card-actions justify-end">
-					<Link href="/create_question" legacyBehavior>
-						<button className="btn btn-primary" onClick={handleViewClick}>
+					<Link href="/quiz/[id]/score" as={`/quiz/${props.id}/score`}>
+						<button className="btn btn-primary">
 							Visualizar
 						</button>
 					</Link>

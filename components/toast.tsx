@@ -4,6 +4,7 @@ interface ToastProps {
     title: string;
     description?: string;
     type?: string;
+    onClose?: () => void;
 }
 
 export default function Toast(props: ToastProps) {
@@ -22,6 +23,7 @@ export default function Toast(props: ToastProps) {
     const handleAnimationEnd = () => {
         setShow(false);
         setRemove(true);
+        if (props.onClose) props.onClose();
     };
 
     if (remove) return null;

@@ -15,7 +15,7 @@ export default function Score() {
     )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
 
     return {
         props: {

@@ -4,6 +4,7 @@ export default function CreateQuestion() {
 	return (
 		<ModalCreateQuiz
 			pergId=""
+			tipo="create"
 			pergDescription=""
 			pergTitle=""
 			respostas={[]}

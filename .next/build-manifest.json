@@ -22,20 +22,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/login_page": [
+    "/create_question": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/login_page.js"
+      "static/chunks/pages/create_question.js"
     ],
-    "/student_name": [
+    "/home_question": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/student_name.js"
-    ],
-    "/user_code": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/user_code.js"
+      "static/chunks/pages/home_question.js"
     ]
   },
   "ampFirstPages": []

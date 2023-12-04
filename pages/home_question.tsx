@@ -50,8 +50,8 @@ export default function HomeQuestion() {
 	function onDelete(id: string) {
 		return async () => {
 			try {
-				const resp = await axios.delete("http://localhost:4000/pergunta/delete/" + id);
-
+				const resp = await axios.delete("http://localhost:4000/pergunta/" + id);
+				console.log(resp);
 				if (resp.status === 200) {
 					await getPerguntas();
 				} else {
@@ -108,6 +108,7 @@ export default function HomeQuestion() {
 					<label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
 					<ul className="menu w-fit min-h-full bg-gray-800 text-base-content">
 						<ModalCreateQuiz
+							tipo="update"
 							pergId={pergunta.id}
 							pergDescription={pergunta.description}
 							pergTitle={pergunta.titulo}

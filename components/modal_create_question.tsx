@@ -9,6 +9,7 @@ interface Props {
 	respostas: Resposta[];
 	titleForms: string;
 	modal: boolean;
+	tipo: "create" | "update";
 	onClose: () => void;
 }
 
@@ -79,7 +80,11 @@ export default function ModalCreateQuiz(props: Props) {
 				respostas: respostas.filter((resposta) => resposta.description),
 			};
 
-			const resp = await axios.post("http://localhost:4000/pergunta", perguntaSubmit);
+			if (props.tipo == "create") {
+				const resp = await axios.post("http://localhost:4000/pergunta", perguntaSubmit);
+			} else {
+				const resp = await axios.post("http://localhost:4000/pergunta/update", perguntaSubmit);
+			}
 
 			props.onClose();
 			// toastEmitted(["Pergunta salvada com sucesso"], "success");

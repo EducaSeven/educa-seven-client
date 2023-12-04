@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/student_name": "pages/student_name.js",
-  "/login_page": "pages/login_page.js",
-  "/user_code": "pages/user_code.js"
+  "/create_question": "pages/create_question.js",
+  "/home_question": "pages/home_question.js",
+  "/": "pages/index.js"
 }

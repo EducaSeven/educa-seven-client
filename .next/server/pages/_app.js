@@ -60,6 +60,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./components/AuthProviderComponent.tsx":
+/*!**********************************************!*\
+  !*** ./components/AuthProviderComponent.tsx ***!
+  \**********************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   AuthContext: () => (/* binding */ AuthContext),\n/* harmony export */   AuthProvider: () => (/* binding */ AuthProvider)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var nookies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! nookies */ \"nookies\");\n/* harmony import */ var nookies__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(nookies__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ \"./node_modules/next/router.js\");\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_1__]);\naxios__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];\n\n\n\n\n\nconst AuthContext = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_2__.createContext)({});\nfunction AuthProvider({ children }) {\n    const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null);\n    const isAuthenticated = !!user;\n    async function signIn({ usuario, senha }) {\n        try {\n            const { id, nome } = (await axios__WEBPACK_IMPORTED_MODULE_1__[\"default\"].post(\"http://localhost:4000/user/login\", {\n                usuario,\n                senha\n            })).data;\n            console.log(id, nome);\n            if (id) {\n                (0,nookies__WEBPACK_IMPORTED_MODULE_3__.setCookie)(undefined, \"user_id\", id, {\n                    maxAge: 60 * 30 * 1\n                });\n                (0,nookies__WEBPACK_IMPORTED_MODULE_3__.setCookie)(undefined, \"user_name\", nome);\n                setUser({\n                    id,\n                    nome\n                });\n                next_router__WEBPACK_IMPORTED_MODULE_4___default().push(`/`);\n            }\n        } catch (error) {\n            console.error(error);\n        }\n    }\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(AuthContext.Provider, {\n        value: {\n            user,\n            isAuthenticated,\n            signIn\n        },\n        children: children\n    }, void 0, false, {\n        fileName: \"/Users/cassioritse/www/educa-seven-client/components/AuthProviderComponent.tsx\",\n        lineNumber: 50,\n        columnNumber: 9\n    }, this);\n}\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } });//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb21wb25lbnRzL0F1dGhQcm92aWRlckNvbXBvbmVudC50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQTBCO0FBQytCO0FBQ1Q7QUFDZjtBQWlCMUIsTUFBTUssNEJBQWNKLG9EQUFhQSxDQUFDLENBQUMsR0FBc0I7QUFFekQsU0FBU0ssYUFBYSxFQUFDQyxRQUFRLEVBQW9CO0lBQ3RELE1BQU0sQ0FBQ0MsTUFBTUMsUUFBUSxHQUFHUCwrQ0FBUUEsQ0FBYztJQUM5QyxNQUFNUSxrQkFBa0IsQ0FBQyxDQUFDRjtJQUUxQixlQUFlRyxPQUFPLEVBQUNDLE9BQU8sRUFBRUMsS0FBSyxFQUFhO1FBQzlDLElBQUk7WUFDQSxNQUFNLEVBQUNDLEVBQUUsRUFBRUMsSUFBSSxFQUFDLEdBQUcsQ0FBQyxNQUFNZixrREFBVSxDQUFDLG9DQUFvQztnQkFBQ1k7Z0JBQVNDO1lBQUssRUFBQyxFQUNwRkksSUFBSTtZQUVUQyxRQUFRQyxHQUFHLENBQUNMLElBQUlDO1lBQ2hCLElBQUlELElBQUk7Z0JBQ0pYLGtEQUFTQSxDQUFDaUIsV0FBVyxXQUFXTixJQUFJO29CQUNoQ08sUUFBUSxLQUFLLEtBQUs7Z0JBQ3RCO2dCQUVBbEIsa0RBQVNBLENBQUNpQixXQUFXLGFBQWFMO2dCQUNuQ04sUUFBUTtvQkFBQ0s7b0JBQUlDO2dCQUFJO2dCQUVoQlgsdURBQVcsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUVuQjtRQUNKLEVBQUUsT0FBT21CLE9BQU87WUFDWkwsUUFBUUssS0FBSyxDQUFDQTtRQUNsQjtJQUNKO0lBRUEscUJBQ0ksOERBQUNsQixZQUFZbUIsUUFBUTtRQUFDQyxPQUFPO1lBQUNqQjtZQUFNRTtZQUFpQkM7UUFBTTtrQkFDdERKOzs7Ozs7QUFHYiIsInNvdXJjZXMiOlsid2VicGFjazovL2VkdWNhLXNldmVuLWNsaWVudC8uL2NvbXBvbmVudHMvQXV0aFByb3ZpZGVyQ29tcG9uZW50LnRzeD9iZjY1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBheGlvcyBmcm9tIFwiYXhpb3NcIjtcbmltcG9ydCB7Y3JlYXRlQ29udGV4dCwgdXNlRWZmZWN0LCB1c2VTdGF0ZX0gZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQge3NldENvb2tpZSwgcGFyc2VDb29raWVzfSBmcm9tIFwibm9va2llc1wiO1xuaW1wb3J0IFJvdXRlciBmcm9tIFwibmV4dC9yb3V0ZXJcIjtcblxudHlwZSBBdXRoQ29udGV4dFR5cGUgPSB7XG4gICAgdXNlcjogVXNlciB8IG51bGw7XG4gICAgaXNBdXRoZW50aWNhdGVkOiBib29sZWFuO1xuICAgIHNpZ25JbjogKGRhdGE6IFNpZ25JbkRhdGEpID0+IFByb21pc2U8dm9pZD47XG59O1xuXG50eXBlIFNpZ25JbkRhdGEgPSB7XG4gICAgdXN1YXJpbzogc3RyaW5nO1xuICAgIHNlbmhhOiBzdHJpbmc7XG59O1xudHlwZSBVc2VyID0ge1xuICAgIGlkOiBzdHJpbmc7XG4gICAgbm9tZTpzdHJpbmdcbn07XG5cbmV4cG9ydCBjb25zdCBBdXRoQ29udGV4dCA9IGNyZWF0ZUNvbnRleHQoe30gYXMgQXV0aENvbnRleHRUeXBlKTtcblxuZXhwb3J0IGZ1bmN0aW9uIEF1dGhQcm92aWRlcih7Y2hpbGRyZW59OiB7IGNoaWxkcmVuOiBhbnkgfSkge1xuICAgIGNvbnN0IFt1c2VyLCBzZXRVc2VyXSA9IHVzZVN0YXRlPFVzZXIgfCBudWxsPihudWxsKTtcbiAgICBjb25zdCBpc0F1dGhlbnRpY2F0ZWQgPSAhIXVzZXI7XG5cbiAgICBhc3luYyBmdW5jdGlvbiBzaWduSW4oe3VzdWFyaW8sIHNlbmhhfTogU2lnbkluRGF0YSkge1xuICAgICAgICB0cnkge1xuICAgICAgICAgICAgY29uc3Qge2lkLCBub21lfSA9IChhd2FpdCBheGlvcy5wb3N0KFwiaHR0cDovL2xvY2FsaG9zdDo0MDAwL3VzZXIvbG9naW5cIiwge3VzdWFyaW8sIHNlbmhhfSkpXG4gICAgICAgICAgICAgICAgLmRhdGE7XG5cbiAgICAgICAgICAgIGNvbnNvbGUubG9nKGlkLCBub21lKVxuICAgICAgICAgICAgaWYgKGlkKSB7XG4gICAgICAgICAgICAgICAgc2V0Q29va2llKHVuZGVmaW5lZCwgXCJ1c2VyX2lkXCIsIGlkLCB7XG4gICAgICAgICAgICAgICAgICAgIG1heEFnZTogNjAgKiAzMCAqIDEsIC8vIGhhbGYgaG91clxuICAgICAgICAgICAgICAgIH0pO1xuXG4gICAgICAgICAgICAgICAgc2V0Q29va2llKHVuZGVmaW5lZCwgXCJ1c2VyX25hbWVcIiwgbm9tZSlcbiAgICAgICAgICAgICAgIHNldFVzZXIoe2lkLCBub21lfSk7XG5cbiAgICAgICAgICAgICAgICBSb3V0ZXIucHVzaChgL2ApO1xuXG4gICAgICAgICAgICB9XG4gICAgICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICAgICAgICBjb25zb2xlLmVycm9yKGVycm9yKTtcbiAgICAgICAgfVxuICAgIH1cblxuICAgIHJldHVybiAoXG4gICAgICAgIDxBdXRoQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17e3VzZXIsIGlzQXV0aGVudGljYXRlZCwgc2lnbklufX0+XG4gICAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgIDwvQXV0aENvbnRleHQuUHJvdmlkZXI+XG4gICAgKTtcbn0iXSwibmFtZXMiOlsiYXhpb3MiLCJjcmVhdGVDb250ZXh0IiwidXNlU3RhdGUiLCJzZXRDb29raWUiLCJSb3V0ZXIiLCJBdXRoQ29udGV4dCIsIkF1dGhQcm92aWRlciIsImNoaWxkcmVuIiwidXNlciIsInNldFVzZXIiLCJpc0F1dGhlbnRpY2F0ZWQiLCJzaWduSW4iLCJ1c3VhcmlvIiwic2VuaGEiLCJpZCIsIm5vbWUiLCJwb3N0IiwiZGF0YSIsImNvbnNvbGUiLCJsb2ciLCJ1bmRlZmluZWQiLCJtYXhBZ2UiLCJwdXNoIiwiZXJyb3IiLCJQcm92aWRlciIsInZhbHVlIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./components/AuthProviderComponent.tsx\n");
+
+/***/ }),
+
 /***/ "./components/sidebar.tsx":
 /*!********************************!*\
   !*** ./components/sidebar.tsx ***!
@@ -75,10 +86,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!************************!*\
   !*** ./pages/_app.tsx ***!
   \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ App)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/styles/globals.css */ \"./styles/globals.css\");\n/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_globals_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/sidebar */ \"./components/sidebar.tsx\");\n\n\n\nfunction App({ Component, pageProps }) {\n    if (Component.name === \"Login\" || Component.name === \"Register\") {\n        return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(Component, {\n            ...pageProps\n        }, void 0, false, {\n            fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n            lineNumber: 7,\n            columnNumber: 16\n        }, this);\n    }\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_sidebar__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n            children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(Component, {\n                ...pageProps\n            }, void 0, false, {\n                fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n                lineNumber: 13,\n                columnNumber: 17\n            }, this)\n        }, void 0, false, {\n            fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n            lineNumber: 12,\n            columnNumber: 13\n        }, this)\n    }, void 0, false);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9fYXBwLnRzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQTZCO0FBRWM7QUFFNUIsU0FBU0MsSUFBSSxFQUFDQyxTQUFTLEVBQUVDLFNBQVMsRUFBVztJQUN4RCxJQUFJRCxVQUFVRSxJQUFJLEtBQUssV0FBV0YsVUFBVUUsSUFBSSxLQUFLLFlBQVk7UUFDN0QscUJBQU8sOERBQUNGO1lBQVcsR0FBR0MsU0FBUzs7Ozs7O0lBQ25DO0lBRUEscUJBQ0k7a0JBQ0ksNEVBQUNILDJEQUFPQTtzQkFDSiw0RUFBQ0U7Z0JBQVcsR0FBR0MsU0FBUzs7Ozs7Ozs7Ozs7O0FBSXhDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZWR1Y2Etc2V2ZW4tY2xpZW50Ly4vcGFnZXMvX2FwcC50c3g/MmZiZSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgJ0Avc3R5bGVzL2dsb2JhbHMuY3NzJ1xuaW1wb3J0IHR5cGUge0FwcFByb3BzfSBmcm9tICduZXh0L2FwcCdcbmltcG9ydCBTaWRlYmFyIGZyb20gXCJAL2NvbXBvbmVudHMvc2lkZWJhclwiO1xuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBcHAoe0NvbXBvbmVudCwgcGFnZVByb3BzfTogQXBwUHJvcHMpIHtcbiAgICBpZiAoQ29tcG9uZW50Lm5hbWUgPT09ICdMb2dpbicgfHwgQ29tcG9uZW50Lm5hbWUgPT09ICdSZWdpc3RlcicpIHtcbiAgICAgICAgcmV0dXJuIDxDb21wb25lbnQgey4uLnBhZ2VQcm9wc30vPlxuICAgIH1cblxuICAgIHJldHVybiAoXG4gICAgICAgIDw+XG4gICAgICAgICAgICA8U2lkZWJhcj5cbiAgICAgICAgICAgICAgICA8Q29tcG9uZW50IHsuLi5wYWdlUHJvcHN9Lz5cbiAgICAgICAgICAgIDwvU2lkZWJhcj5cbiAgICAgICAgPC8+XG4gICAgKVxufVxuXG5cbiJdLCJuYW1lcyI6WyJTaWRlYmFyIiwiQXBwIiwiQ29tcG9uZW50IiwicGFnZVByb3BzIiwibmFtZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./pages/_app.tsx\n");
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ App)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/styles/globals.css */ \"./styles/globals.css\");\n/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_globals_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/sidebar */ \"./components/sidebar.tsx\");\n/* harmony import */ var _components_AuthProviderComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/AuthProviderComponent */ \"./components/AuthProviderComponent.tsx\");\n/* harmony import */ var nookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! nookies */ \"nookies\");\n/* harmony import */ var nookies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(nookies__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_AuthProviderComponent__WEBPACK_IMPORTED_MODULE_3__]);\n_components_AuthProviderComponent__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];\n\n\n\n\n\n\nfunction App({ Component, pageProps }) {\n    (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(()=>{\n        const { user_id } = (0,nookies__WEBPACK_IMPORTED_MODULE_4__.parseCookies)();\n        if (!user_id && Component.name != \"Login\") {\n            document.location = \"/login\";\n        }\n    });\n    if (Component.name === \"Login\" || Component.name === \"Register\") {\n        return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(Component, {\n            ...pageProps\n        }, void 0, false, {\n            fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n            lineNumber: 20,\n            columnNumber: 10\n        }, this);\n    }\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_AuthProviderComponent__WEBPACK_IMPORTED_MODULE_3__.AuthProvider, {\n            children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_sidebar__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(Component, {\n                    ...pageProps\n                }, void 0, false, {\n                    fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n                    lineNumber: 27,\n                    columnNumber: 6\n                }, this)\n            }, void 0, false, {\n                fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n                lineNumber: 26,\n                columnNumber: 5\n            }, this)\n        }, void 0, false, {\n            fileName: \"/Users/cassioritse/www/educa-seven-client/pages/_app.tsx\",\n            lineNumber: 25,\n            columnNumber: 4\n        }, this)\n    }, void 0, false);\n}\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } });//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9fYXBwLnRzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBOEI7QUFFYTtBQUN1QjtBQUMzQjtBQUVMO0FBRW5CLFNBQVNJLElBQUksRUFBRUMsU0FBUyxFQUFFQyxTQUFTLEVBQVk7SUFDN0RILGdEQUFTQSxDQUFDO1FBQ1QsTUFBTSxFQUFFSSxPQUFPLEVBQUUsR0FBR0wscURBQVlBO1FBRWhDLElBQUksQ0FBQ0ssV0FBV0YsVUFBVUcsSUFBSSxJQUFJLFNBQVE7WUFFekNDLFNBQVNDLFFBQVEsR0FBRztRQUNyQjtJQUNEO0lBRUEsSUFBSUwsVUFBVUcsSUFBSSxLQUFLLFdBQVdILFVBQVVHLElBQUksS0FBSyxZQUFZO1FBQ2hFLHFCQUFPLDhEQUFDSDtZQUFXLEdBQUdDLFNBQVM7Ozs7OztJQUNoQztJQUVBLHFCQUNDO2tCQUNDLDRFQUFDTCwyRUFBWUE7c0JBQ1osNEVBQUNELDJEQUFPQTswQkFDUCw0RUFBQ0s7b0JBQVcsR0FBR0MsU0FBUzs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFLN0IiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9lZHVjYS1zZXZlbi1jbGllbnQvLi9wYWdlcy9fYXBwLnRzeD8yZmJlIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcIkAvc3R5bGVzL2dsb2JhbHMuY3NzXCI7XG5pbXBvcnQgdHlwZSB7IEFwcFByb3BzIH0gZnJvbSBcIm5leHQvYXBwXCI7XG5pbXBvcnQgU2lkZWJhciBmcm9tIFwiQC9jb21wb25lbnRzL3NpZGViYXJcIjtcbmltcG9ydCB7IEF1dGhQcm92aWRlciB9IGZyb20gXCJAL2NvbXBvbmVudHMvQXV0aFByb3ZpZGVyQ29tcG9uZW50XCI7XG5pbXBvcnQgeyBwYXJzZUNvb2tpZXMgfSBmcm9tIFwibm9va2llc1wiO1xuaW1wb3J0IHsgdXNlUm91dGVyIH0gZnJvbSBcIm5leHQvcm91dGVyXCI7XG5pbXBvcnQgeyB1c2VFZmZlY3QgfSBmcm9tIFwicmVhY3RcIjtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gQXBwKHsgQ29tcG9uZW50LCBwYWdlUHJvcHMgfTogQXBwUHJvcHMpIHtcblx0dXNlRWZmZWN0KCgpID0+IHtcblx0XHRjb25zdCB7IHVzZXJfaWQgfSA9IHBhcnNlQ29va2llcygpO1xuXG5cdFx0aWYgKCF1c2VyX2lkICYmIENvbXBvbmVudC5uYW1lICE9ICdMb2dpbicpe1xuXG5cdFx0XHRkb2N1bWVudC5sb2NhdGlvbiA9IFwiL2xvZ2luXCI7XG5cdFx0fVxuXHR9KTtcblxuXHRpZiAoQ29tcG9uZW50Lm5hbWUgPT09IFwiTG9naW5cIiB8fCBDb21wb25lbnQubmFtZSA9PT0gXCJSZWdpc3RlclwiKSB7XG5cdFx0cmV0dXJuIDxDb21wb25lbnQgey4uLnBhZ2VQcm9wc30gLz47XG5cdH1cblxuXHRyZXR1cm4gKFxuXHRcdDw+XG5cdFx0XHQ8QXV0aFByb3ZpZGVyPlxuXHRcdFx0XHQ8U2lkZWJhcj5cblx0XHRcdFx0XHQ8Q29tcG9uZW50IHsuLi5wYWdlUHJvcHN9IC8+XG5cdFx0XHRcdDwvU2lkZWJhcj5cblx0XHRcdDwvQXV0aFByb3ZpZGVyPlxuXHRcdDwvPlxuXHQpO1xufVxuIl0sIm5hbWVzIjpbIlNpZGViYXIiLCJBdXRoUHJvdmlkZXIiLCJwYXJzZUNvb2tpZXMiLCJ1c2VFZmZlY3QiLCJBcHAiLCJDb21wb25lbnQiLCJwYWdlUHJvcHMiLCJ1c2VyX2lkIiwibmFtZSIsImRvY3VtZW50IiwibG9jYXRpb24iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./pages/_app.tsx\n");
 
 /***/ }),
 
@@ -89,6 +100,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ (() => {
 
 
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/pages.runtime.dev.js":
+/*!**********************************************************************!*\
+  !*** external "next/dist/compiled/next-server/pages.runtime.dev.js" ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/next-server/pages.runtime.dev.js");
+
+/***/ }),
+
+/***/ "nookies":
+/*!**************************!*\
+  !*** external "nookies" ***!
+  \**************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("nookies");
 
 /***/ }),
 
@@ -103,6 +136,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-dom");
+
+/***/ }),
+
 /***/ "react/jsx-dev-runtime":
 /*!****************************************!*\
   !*** external "react/jsx-dev-runtime" ***!
@@ -111,6 +155,50 @@ module.exports = require("react");
 
 "use strict";
 module.exports = require("react/jsx-dev-runtime");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = import("axios");;
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
 
 /***/ })
 
@@ -121,7 +209,7 @@ module.exports = require("react/jsx-dev-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/react-icons"], () => (__webpack_exec__("./pages/_app.tsx")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/react-icons"], () => (__webpack_exec__("./pages/_app.tsx")));
 module.exports = __webpack_exports__;
 
 })();

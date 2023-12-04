@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/login": "pages/login.js",
   "/create_question": "pages/create_question.js",
-  "/home_question": "pages/home_question.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/create_quiz": "pages/create_quiz.js"
 }

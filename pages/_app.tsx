@@ -1,24 +1,32 @@
-import '@/styles/globals.css'
-import type {AppProps} from 'next/app'
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
 import Sidebar from "@/components/sidebar";
-import {AuthProvider} from "@/components/AuthProviderComponent";
+import { AuthProvider } from "@/components/AuthProviderComponent";
+import { parseCookies } from "nookies";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
+export default function App({ Component, pageProps }: AppProps) {
+	useEffect(() => {
+		const { user_id } = parseCookies();
 
-export default function App({Component, pageProps}: AppProps) {
+		if (!user_id && Component.name != 'Login'){
 
-    if (Component.name === 'Login' || Component.name === 'Register') {
-        return <Component {...pageProps}/>
-    }
+			document.location = "/login";
+		}
+	});
 
-    return (
-        <>
-            <AuthProvider>
-                <Sidebar>
-                    <Component {...pageProps}/>
-                </Sidebar>
-            </AuthProvider>
-        </>
-    )
+	if (Component.name === "Login" || Component.name === "Register") {
+		return <Component {...pageProps} />;
+	}
+
+	return (
+		<>
+			<AuthProvider>
+				<Sidebar>
+					<Component {...pageProps} />
+				</Sidebar>
+			</AuthProvider>
+		</>
+	);
 }
-
-

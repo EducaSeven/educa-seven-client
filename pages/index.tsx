@@ -6,6 +6,7 @@ import axios from "axios";
 interface Quiz {
     id: string;
     nome: string;
+    descricao: string;
 }
 
 interface HomeProps {
@@ -47,7 +48,7 @@ export default function Home({data}: HomeProps) {
                         key={index}
                         id={index.toString()}
                         title={question.nome}
-                        description={'asdasd'}
+                        description={question.descricao}
                     />
                 ))}
             </div>

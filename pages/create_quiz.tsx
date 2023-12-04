@@ -102,7 +102,7 @@ export default function CreateQuiz() {
     return (
         <div className="w-full px-14 flex flex-col gap-6 mt-6 h-full">
             {perguntaJaExiste && (
-                <Toast title={"Pergunta já adicionada"} type={"error"} onClose={() => setPerguntaJaExiste(false)}/>
+                <Toast title={"Pergunta já adicionada"} type={"alert-warning"} onClose={() => setPerguntaJaExiste(false)}/>
             )}
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold">Criar novo Quiz</h1>

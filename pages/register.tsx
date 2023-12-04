@@ -16,7 +16,7 @@ export default function Login() {
     function submitLogin(event: any) {
         event.preventDefault();
 
-        axios.post('http://localhost:4000/user/login', { username, password })
+        axios.post('http://localhost:4000/login', { username, password })
             .then(response => {
                 const data = response.data;
                 if (data.success) {
@@ -56,14 +56,14 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <Link href={"/register"}>
-                    <div className={"text-blue-500 hover:link"}>Registre-se</div>
+                <Link href={"/login"}>
+                    <div className={"text-blue-500 hover:link"}>Entrar</div>
                 </Link>
                 <button
                     type="submit"
                     className={"w-72 py-2 rounded-md bg-[#20DF7F] text-white"}
                 >
-                    Entrar
+                    Registrar
                 </button>
             </form>
         </div>

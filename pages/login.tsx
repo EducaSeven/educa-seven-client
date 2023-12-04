@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import {useContext, useState} from 'react';
 import axios from 'axios';
 import Toast from "@/components/toast";
-import {router} from "next/client";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {parseCookies} from "nookies";
+import {AuthContext} from "@/components/AuthProviderComponent";
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -11,26 +12,11 @@ export default function Login() {
     const [error, setError] = useState(false);
     const [errorText, setErrorText] = useState('');
     const router = useRouter();
+    const {signIn} = useContext(AuthContext);
 
 
-    function submitLogin(event: any) {
-        event.preventDefault();
-
-        axios.post('http://localhost:4000/user/login', { username, password })
-            .then(response => {
-                const data = response.data;
-                if (data.success) {
-                    router.push('/dashboard');
-                } else {
-                    setErrorText('Usuário ou senha incorretos');
-                    setError(true);
-
-                }
-            })
-            .catch(error => {
-                setErrorText('Erro ao fazer login');
-                setError(true);
-            });
+    async function submitLogin(event: any) {
+        await signIn({usuario:username, senha:password});
     }
 
     return (
@@ -68,4 +54,21 @@ export default function Login() {
             </form>
         </div>
     )
+}
+
+export function getServerSideProps(context: any) {
+    const { user_id } = parseCookies(context);
+
+    if (user_id) {
+        return {
+            redirect: {
+                destination: '/dashboard',
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        props: {},
+    }
 }

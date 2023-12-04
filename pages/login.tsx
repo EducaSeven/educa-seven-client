@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import Toast from "@/components/toast";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { AuthContext } from "@/components/AuthProviderComponent";
 import axios from "axios";
 import { setCookie } from "nookies";
 
@@ -11,8 +10,6 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(false);
 	const [errorText, setErrorText] = useState("");
-	const router = useRouter();
-	const { signIn } = useContext(AuthContext);
 
 	async function submitLogin(event: any) {
 		event.preventDefault();

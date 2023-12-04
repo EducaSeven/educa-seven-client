@@ -46,7 +46,7 @@ export default function Home({data}: HomeProps) {
                 {data && data.map((question, index) => (
                     <CardQuiz
                         key={index}
-                        id={index.toString()}
+                        id={question.id}
                         title={question.nome}
                         description={question.descricao}
                     />

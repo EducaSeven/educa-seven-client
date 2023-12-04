@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react';
-
+import {useRouter} from 'next/router'
+import {useEffect, useState} from 'react';
+import axios from "axios";
 
 interface Score {
     id: number;
@@ -10,16 +10,41 @@ interface Score {
 }
 
 interface ScoreProps {
-    data: Score;
+    data: Score[]
 }
 
 export default function Score(props: ScoreProps) {
-
-    console.log(props.data);
-
+    const router = useRouter()
     return (
         <div>
             <h1>Score by id: </h1>
+
+
+            <div className="overflow-x-auto">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Data</th>
+                        <th>Pontuacao</th>
+                        <th>Acertos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {props.data.map((score, index) => (
+
+                        <tr className={index % 2 === 0 ? "bg-base-200" : "bg-base-100"}>
+                            <td>{score.id}</td>
+                            <td></td>
+                            <td>{score.nome}</td>
+                            <td>{score.pontuacao}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     )
 }
@@ -28,16 +53,15 @@ export async function getServerSideProps(context: any) {
     let data = null;
 
     try {
-         data = await fetch(`http://localhost:4000/pontuacao/${context.query.id}`);
-
+        const resp = (await axios.get(`http://localhost:4000/pontuacao/${context.query.id}`)).data
+        data = resp.resp
 
     } catch (error) {
         console.error("Error:", error);
     }
-
     return {
         props: {
-            data: data
+            data: data,
         }
     }
 }

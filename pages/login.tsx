@@ -20,6 +20,9 @@ export default function Login() {
 			setCookie(undefined, "user_id", id, {
 				maxAge: 60 * 30 * 1, // half hour
 			});
+			setCookie(undefined, "user_name", nome, {
+				maxAge: 60 * 30 * 1, // half hour
+			});
 			document.location = "/";
 		} else {
 			setErrorText("Usuario ou senha incorreto.");

@@ -33,7 +33,7 @@ export default function Toast(props: ToastProps) {
             className={`toast toast-top toast-end cursor-pointer ${show ? "show" : ""}`}
             onClick={() => setShow(false)}
         >
-            <div className={`alert alert-${props.type}`}>
+            <div className={`alert ${props.type}`}>
                 <span>{props.title}</span>
             </div>
         </div>
